@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shoppro.mapper.adminMapper">
+
+	<select id="getitemlist" resultType="com.shoppro.domain.itemVO">
+		select * from item
+	</select>
+		
+	<select id="checkoverlapID" resultType="int" parameterType="string">
+		select count(*) from member where memid=#{memid}
+	</select>
+	
+	<insert id="itemRegit">
+		insert into item (itemid,itemname,itemgenre,itemimg,price,itemstate,itemcount,itembrand,sellcount,sex,itemsize,itemmanual) values (auto_itemid.nextval,#{itemname},#{itemgenre},#{itemimg},#{price},#{itemstate},#{itemcount},#{itembrand},#{sellcount},#{sex},#{itemsize},#{itemmanual})
+	</insert>
+
+</mapper>

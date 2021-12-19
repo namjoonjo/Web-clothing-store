@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shoppro.mapper.mainMapper">
+	
+	<select id="allofgetbestitem" resultType="com.shoppro.domain.itemVO">
+		<![CDATA[select * from (select * from item order by sellcount desc) where rownum<=4]]>
+	</select>
+	
+	<select id="kindofgetbestitem" resultType="com.shoppro.domain.itemVO" parameterType="hashmap" >
+		<![CDATA[select * from item where itemgenre=#{itemgenre} and rownum<=4 order by sellcount desc]]>
+	</select>
+
+	<select id="getitemDetails" resultType="com.shoppro.domain.itemVO" parameterType="hashmap">
+		select * from item where itemid=#{itemid}
+	</select>
+	
+</mapper>

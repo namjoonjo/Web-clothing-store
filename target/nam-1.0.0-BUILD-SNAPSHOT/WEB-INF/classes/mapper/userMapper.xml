@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shoppro.mapper.userMapper">
+
+	<select id="getLoginResult" resultType="com.shoppro.domain.memberVO">
+		select * from member where memid=#{memid} and password=#{password}
+	</select>
+	
+	<insert id="signUpResult">
+		insert into member (memid,name,password,address,phonenum,email) values (#{memid},#{name},#{password},#{address},#{phonenum},#{email})
+	</insert>
+	
+	<select id="checkoverlapID" resultType="int" parameterType="string">
+		select count(*) from member where memid=#{memid}
+	</select>
+
+</mapper>
